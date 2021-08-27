@@ -28,7 +28,7 @@ public class Member {
     @Column(length = 50, nullable = false)
     private String address;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 45, nullable = false)
     private String date;
 
     @Column(length = 5, nullable = false)

@@ -1,5 +1,6 @@
 package springboot.springboot.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -7,9 +8,10 @@ import springboot.springboot.dto.MemberDto;
 import springboot.springboot.service.MemberService;
 
 @Controller
+@RequiredArgsConstructor
 public class MemberController {
 
-    private MemberService memberService;
+    private final MemberService memberService;
 
     @GetMapping("/")
     public String main() {
@@ -23,11 +25,11 @@ public class MemberController {
     }
 
     // 회원가입 처리
-    @PostMapping("/user/join")
+    @PostMapping("/userJoin")
     public String Sign(MemberDto memberDto) {
         memberService.joinUser(memberDto);
 
-        return "redirect:/memberLogin";
+        return "redirect:/user/login";
     }
 
     // 로그인

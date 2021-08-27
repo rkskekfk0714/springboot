@@ -1,15 +1,17 @@
 package springboot.springboot.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import springboot.springboot.domain.repository.MemberRepository;
 import springboot.springboot.dto.MemberDto;
 
-import javax.transaction.Transactional;
-
+@Service
+@RequiredArgsConstructor
 public class MemberService {
 
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
-    @Transactional
+
     public Long joinUser(MemberDto memberDto) {
         return memberRepository.save(memberDto.toEntity()).getId();
     }
